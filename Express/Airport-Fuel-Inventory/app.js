@@ -18,16 +18,14 @@ var app = express();
 //cross origin request
 app.use(cors());
 
-// connect to database
-// mongoose.connect(' mongodb://127.0.0.1:27017/test', { useUnifiedTopology: true , useNewUrlParser: true }).then((err,msg)=>{
-//   console.log(msg)
-// })
 
+// connecting to mongodb database
 mongoose.Promise = Promise;
 mongoose.set('useCreateIndex', true);
 var mongooseOptions = {  useNewUrlParser: true }
-
-mongoose.connect('mongodb://127.0.0.1:27017/test', mongooseOptions, function(err) {
+//user can modify the uri as per their requirement
+var uri = 'mongodb://127.0.0.1:27017/test'
+mongoose.connect(uri, mongooseOptions, function(err) {
     if (err) {
         console.error('System could not connect to mongo server.')
         console.log(err)     

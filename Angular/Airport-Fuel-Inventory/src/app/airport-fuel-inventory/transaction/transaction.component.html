@@ -10,18 +10,20 @@
         <tbody>
            <tr>
               <td><select name="" id="" [(ngModel)]="entryTransaction.Type">
-                  <option value="IN">IN</option>
+                  <option value="" selected>Select</option>
+                  <option value="IN" selected>IN</option>
                   <option value="OUT">OUT</option>
                   </select>
               </td>
               <td>
                   <select name="" id="" [(ngModel)]="entryTransaction.airport_name" >
-                      <option value="" >Select</option>
+                      <option value="" selected>Select</option>
                       <option [value]="Airport.airport_name" *ngFor="let Airport of AirportList">{{Airport.airport_name}}</option>
                   </select>
               </td>
               <td>
                 <select name="" id="" [(ngModel)]="entryTransaction.aircraft" [disabled]="entryTransaction.Type == 'IN'">
+                    <option value="" selected>Select</option>
                     <option [value]="Aircraft.aircraft_no" *ngFor="let Aircraft of AircraftList">{{Aircraft.aircraft_no}}</option>
                 </select>
               </td>
@@ -62,8 +64,9 @@
 
 <div>
     <h2>All Transaction of every Airport:</h2>
-    <label for="">Select Airport  <select name="" id="" [(ngModel)]="selectedAirport" >
-        <option value="" >Select</option>
+    <label for="">Select Airport  
+    <select name="" id="" [(ngModel)]="selectedAirport" >
+        <option value="" selected>Select</option>
         <option [value]="Airport.airport_name" *ngFor="let Airport of AirportList">{{Airport.airport_name}}</option>
     </select>
     </label>&nbsp;

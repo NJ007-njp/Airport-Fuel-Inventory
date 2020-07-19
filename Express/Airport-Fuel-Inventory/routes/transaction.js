@@ -11,6 +11,7 @@ router.post('/',async (req,res)=>{
     let transac_details = req.body
     await Transaction.findOne({airport_name:transac_details.airport_name}).then(
         (info)=>{
+           // if transaction entry exists for the airport then modify the transaction history list else make new entry
            if(info != undefined )
              {   console.log('here1')
                  let newTransaction = {} 
@@ -49,6 +50,7 @@ router.post('/',async (req,res)=>{
                 newTransaction.fuel = transac_details.fuel
                 newTransaction.transaction_id_parent = newParentTransac._id
                 newParentTransac.Transaction.unshift( newTransaction)
+                // evaluate fuel_available based on transaction type
                 if( newTransaction.Type == "IN")
                 newParentTransac.fuel_available +=  newTransaction.fuel
                 else if(newTransaction.Type == "OUT")

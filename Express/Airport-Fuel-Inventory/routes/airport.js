@@ -5,7 +5,8 @@ var Transaction = require('../model').Transaction;
 function addAirportDetails(req,res){
     let airport_details = req.body
     Airport.findOne({_id:airport_details._id}).then((info)=>{
-
+     
+     // if airport exists then update field else create a new entry
       if(info !=undefined){
           let _airport = {}
           _airport.fuel_available = airport_details.fuel_available;
@@ -21,6 +22,8 @@ function addAirportDetails(req,res){
           new_airport.airport_name = airport_details.airport_name;
           new_airport.fuel_capacity = airport_details.fuel_capacity;
           new_airport.fuel_available = airport_details.fuel_available;
+
+          //Create a new airport entry and as soon as it is created, create an transaction deatails entry for this airport
           Airport.create(new_airport).then((info)=>{
                let newParentTransac = {}
                 newParentTransac._id = Math.floor(Math.random()*100000).toString()
@@ -37,11 +40,8 @@ function addAirportDetails(req,res){
     })
  }
 
-//  newParentTransac._id = Math.floor(Math.random()*100000).toString()
-//                 newParentTransac.Airport_name = transac_details.airport_name
-//                 newParentTransac.Fuel_available = 0
-//                 newParentTransac.Transaction = []
-
+    
+// middleware for providing all airport list to client
  function getAirportList(req,res){
 
     Airport.find({}).then((info)=>{

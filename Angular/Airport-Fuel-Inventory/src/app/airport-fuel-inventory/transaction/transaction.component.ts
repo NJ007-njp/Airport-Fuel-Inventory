@@ -38,6 +38,7 @@ export class TransactionComponent implements OnInit {
     console.log(this.AircraftList)
   }
 
+  //it will add new transaction details into database through UtilityService
   makeEntry(){
     if(this.validate(this.entryTransaction)){
       this.errorFound = false
@@ -52,10 +53,11 @@ export class TransactionComponent implements OnInit {
     }
   }
 
+  // validation of a transaction
   validate(entry:Transaction):boolean{
     if(!entry.airport_name)
      return false
-    else if(entry.Type == 'OUT' && !entry.aircraft)
+    else if(entry.Type == 'OUT' && !entry.aircraft || entry.Type != 'IN')
      return false 
     else if(!entry.fuel)
      return false
@@ -63,6 +65,7 @@ export class TransactionComponent implements OnInit {
      return true
   }
 
+  //set transaction date in correct desired format
   setDate(){
     let date:Date = new Date()
     let month = date.getMonth()+1
@@ -79,7 +82,8 @@ export class TransactionComponent implements OnInit {
     let formattedDate = date.getFullYear()+'-'+ month +'-'+date.getDate()+"   "+date.getHours()+':'+min+':'+second;
     return formattedDate
   }
-
+  
+  // It helps to findout all transaction for a selected Airport
   fetchTransaction(){
      this.transacForAirport = this.AllTransactionList.find((ele)=>{return ele.airport_name == this.selectedAirport})
      console.log(this.transacForAirport)
