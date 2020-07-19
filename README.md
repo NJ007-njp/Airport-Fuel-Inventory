@@ -22,6 +22,9 @@ This project helps keeping track of all Fuel transaction
   3.make changes in url field in UtilityService.component.ts file and set it where express server is running
   4.ng serve --o
 
+# Login Credential
+   email: admin@airport.com
+   password : Admin@2020
 
 
 # sample data for schema in database
@@ -54,5 +57,5 @@ This project helps keeping track of all Fuel transaction
 
            }
        ]
-
+ 
   
