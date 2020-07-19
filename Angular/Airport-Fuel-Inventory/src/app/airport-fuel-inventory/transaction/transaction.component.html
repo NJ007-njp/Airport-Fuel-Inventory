@@ -1,0 +1,102 @@
+<div class="Transaction_add">
+    <h2>Enter the transaction Details:</h2>
+    <table>
+        <thead>
+           <th>Type</th>
+           <th>Airport Name</th>
+           <th>Aircraft Name</th>
+           <th> Quantity</th>
+        </thead>
+        <tbody>
+           <tr>
+              <td><select name="" id="" [(ngModel)]="entryTransaction.Type">
+                  <option value="IN">IN</option>
+                  <option value="OUT">OUT</option>
+                  </select>
+              </td>
+              <td>
+                  <select name="" id="" [(ngModel)]="entryTransaction.airport_name" >
+                      <option value="" >Select</option>
+                      <option [value]="Airport.airport_name" *ngFor="let Airport of AirportList">{{Airport.airport_name}}</option>
+                  </select>
+              </td>
+              <td>
+                <select name="" id="" [(ngModel)]="entryTransaction.aircraft" [disabled]="entryTransaction.Type == 'IN'">
+                    <option [value]="Aircraft.aircraft_no" *ngFor="let Aircraft of AircraftList">{{Aircraft.aircraft_no}}</option>
+                </select>
+              </td>
+              <td>
+                  <input type="number" [(ngModel)]="entryTransaction.fuel">
+              </td>
+              <td>
+                  <input type="button" value="Add" (click)="makeEntry()">
+              </td>
+           </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="Transaction_add">
+    <h2>Last Transaction done:</h2>
+    <div *ngIf="!errorFound">
+        <table >
+            <thead>
+              <th>id</th>
+              <th>Time</th>
+              <th>Type</th>
+              <th>Airport</th>
+              <th>Aircraft</th>
+              <th>Quantity</th>
+            </thead>
+            <tbody>
+               <td>{{lastEntry._id}}</td>
+               <td>{{lastEntry.date_time}}</td>
+               <td>{{lastEntry.Type}}</td>
+               <td>{{lastEntry.airport_name}}</td>
+               <td>{{lastEntry.aircraft}}</td>
+               <td>{{lastEntry.fuel}}</td>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <h2>All Transaction of every Airport:</h2>
+    <label for="">Select Airport  <select name="" id="" [(ngModel)]="selectedAirport" >
+        <option value="" >Select</option>
+        <option [value]="Airport.airport_name" *ngFor="let Airport of AirportList">{{Airport.airport_name}}</option>
+    </select>
+    </label>&nbsp;
+    <input type="button" value="Fetch Transaction" (click)="fetchTransaction()">
+    <br>
+    <br>
+    <div>
+       <span> <b>Airport:</b> {{transacForAirport.airport_name}}</span>&nbsp;
+       <span><b>Fuel Available:</b>{{transacForAirport.fuel_available}}</span>
+    </div>
+    <br>
+    <br>
+    <div class="Transaction_container">
+        <table >
+            <thead>
+              <th>id</th>
+              <th>Date/Time</th>
+              <th>Type</th>
+              <th>Aircraft</th>
+              <th>Quantity</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let x of transacForAirport.Transaction">
+                    <td>{{x._id}}</td>
+                    <td>{{x.date_time}}</td>
+                    <td>{{x.Type}}</td>
+                    <td>{{x.aircraft}}</td>
+                    <td>{{x.fuel}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+

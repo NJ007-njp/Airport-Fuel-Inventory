@@ -1,0 +1,52 @@
+<div>
+    <input type="button" value="Click To Initialise AirportList"   (click)="getAirports()">&nbsp;
+    <input type="button" value="Click To Initialise AircraftList"  (click)="getAircrafts()">
+</div>
+<br>
+<h2>List Of Airports:</h2>
+<div class="Airport_container">
+    <table >
+        <thead>
+           <th>id</th>
+           <th>name</th>
+           <!-- <th>fuel capacity</th>
+           <th>fuel available</th> -->
+           <th>remove fuel transaction</th>
+        </thead>
+        <tbody class="table_airport">   
+            <tr  *ngFor="let airport of AirportList; index as i">
+                <td>{{airport._id}}</td>
+                <td>{{airport.airport_name}}</td>
+                <!-- <td>{{airport.fuel_capacity}}</td>
+                <td>{{airport.fuel_available}}</td> -->
+                <td><input type="button" value="Remove Transactions" (click)="clearTransaction(i)"></td>
+            </tr>
+        </tbody>  
+    </table> 
+</div>
+<br>
+
+<h2>List Of Aircrafts:</h2>
+<div class="Aircraft_container">
+    <table >
+        <thead>
+           <th>id</th>
+           <th>name</th>
+           <th>airline</th>
+           <th>source</th>
+           <th>destination</th>
+        </thead>
+        <tbody class="table_airport">
+            <tr  *ngFor="let aircraft of AircraftList">
+                <td>{{aircraft._id}}</td>
+                <td>{{aircraft.aircraft_no}}</td>
+                <td>{{aircraft.airline}}</td>
+                <td>{{aircraft.source}}</td>
+                <td>{{aircraft.destination}}</td>
+            </tr>
+        </tbody> 
+    </table> 
+</div>
+
+
+

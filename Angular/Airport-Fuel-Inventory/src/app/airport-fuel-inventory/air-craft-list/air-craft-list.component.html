@@ -1,0 +1,43 @@
+<!-- <div >
+    <table>
+        <thead>
+           <th>id</th>
+           <th>No</th>
+           <th>Airline</th>
+           <th>Source</th>
+           <th>Destination</th>
+        </thead>
+        <tbody>
+           <tr>
+               <td><input type="text" [(ngModel)]="entryAircraft._id"></td>
+               <td><input type="text" [(ngModel)]="entryAircraft.aircraft_no" ></td>
+               <td><input type="text" [(ngModel)]="entryAircraft.airline" pattern = "[0-9]"></td>
+               <td><input type="text" [(ngModel)]="entryAircraft.source"pattern = "[0-9]"></td>
+               <td><input type="text" [(ngModel)]="entryAircraft.destination"pattern = "[0-9]"></td>
+               <td><input type="button" value="Add" (click)="addToAircraftList()"></td>
+           </tr>
+        </tbody>
+    </table>    
+</div> -->
+
+<h2>Aircraft Details:</h2>
+<div class="Aircraft_container">
+    <table >
+        <thead>
+           <th>id</th>
+           <th>No</th>
+           <th>Airline</th>
+           <th>Source</th>
+           <th>Destination</th>
+        </thead>
+        <tbody class="table_aircraft">   
+            <tr  *ngFor="let aircraft of AircraftList">
+                <td>{{aircraft._id}}</td>
+                <td>{{aircraft.aircraft_no}}</td>
+                <td>{{aircraft.airline}}</td>
+                <td>{{aircraft.source}}</td>
+                <td>{{aircraft.destination}}</td>
+            </tr>
+       </tbody> 
+    </table> 
+</div>

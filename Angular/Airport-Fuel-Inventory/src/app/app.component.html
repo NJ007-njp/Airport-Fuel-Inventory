@@ -1,0 +1,37 @@
+<div *ngIf='signon'>
+    <div class="topbar">
+        <nav >
+            <a routerLink="/initialize" routerLinkActive="active">Initialize</a>&nbsp; &nbsp;
+            <a routerLink="/AirportList" routerLinkActive="active">Airport List</a>&nbsp; &nbsp;
+            <a routerLink="/AirCraftList" routerLinkActive="active">Aircraft List</a>&nbsp; &nbsp;
+            <a routerLink="/transaction" routerLinkActive="active">Transaction</a>&nbsp; &nbsp;
+            <a routerLink="/findreport" routerLinkActive="active">Find Report</a>
+        </nav>
+    </div>
+    
+    <br>
+    <br>
+    <router-outlet></router-outlet>
+</div>
+
+<div *ngIf='!signon'>
+    <div>
+        <div>
+            <label for="username">
+             User Name:   <input class="email" type="email" name="email" [(ngModel)]="enteredCred.email">
+            </label>
+        </div>
+        <br>
+        <div>
+            <label for="password">
+              Password:  <input class="password" type="password" name="password" [(ngModel)]="enteredCred.password">
+            </label>
+        </div>
+        <div>
+            <label for="login">
+              <input class="password" type="button" value="Login" (click)="Login()">
+            </label>
+        </div>
+    </div>
+</div>
+

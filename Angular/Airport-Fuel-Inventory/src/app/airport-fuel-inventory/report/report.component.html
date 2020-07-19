@@ -1,0 +1,56 @@
+<div>
+    <h1>Reports</h1>
+    <h2>Airport Summary Report</h2>
+    <br>
+    <div>
+       <table>
+           <thead>
+             <th> <b>Airport</b></th>
+             <th> <b>Fuel</b></th>
+           </thead>
+           <tbody>
+               <tr>
+                   ---------------------------------------------
+               </tr>
+           </tbody>
+           <tbody>
+              <tr *ngFor="let x of AirportSummaryReportList"> 
+                 <td>{{x.Airport}}</td>
+                 <td>{{x.Fuel_Available}}</td>
+              </tr>
+           </tbody>
+       </table>
+    </div>
+    <br>
+    <br>
+    <h2>Fuel Summary Report</h2>
+    <div>
+        <div *ngFor="let x of FuelConsumptionReportList">
+          <div><b>Airport: </b> {{x.Airport}}</div>
+          <br>
+          <div>
+              <table>
+                  <thead>
+                     <th>Date/Time</th>
+                     <th>Type</th>
+                     <th>Fuel</th>
+                     <th>Aircraft</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let t of x.Transaction">
+                      <td>{{t.date_time}}</td>
+                      <td>{{t.Type}}</td>
+                      <td>{{t.fuel}}</td>
+                      <td>{{t.aircraft}}</td>
+                    </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div>
+             <b>Fuel Available :</b>  {{x.Fuel_Available}}
+          </div>
+          ------------
+        </div>
+    </div>
+</div>
+

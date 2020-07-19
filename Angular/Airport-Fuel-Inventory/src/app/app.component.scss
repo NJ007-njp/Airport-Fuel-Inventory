@@ -1,0 +1,17 @@
+.topbar{
+    position: relative;
+    background-color: gray;
+    nav{
+        position: relative;
+        
+        a{
+            background-color: green;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+    }
+    
+}

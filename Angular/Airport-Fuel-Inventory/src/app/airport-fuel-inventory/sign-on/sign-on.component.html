@@ -1,0 +1,18 @@
+<div>
+    <div>
+        <label for="username">
+         User Name:   <input class="email" type="email" name="email" [(ngModel)]="enteredCred.email">
+        </label>
+    </div>
+    <br>
+    <div>
+        <label for="password">
+          Password:  <input class="password" type="password" name="password" [(ngModel)]="enteredCred.password">
+        </label>
+    </div>
+    <div>
+        <label for="login">
+          <input class="password" type="button" value="Login" (click)="Login()">
+        </label>
+    </div>
+</div>

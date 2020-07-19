@@ -1,0 +1,40 @@
+<div >
+    <h2>Add New Airport Details:</h2>
+    <table >
+        <thead>
+           <th>id</th>
+           <th>name</th>
+           <th>fuel capacity</th>
+           <th>fuel available</th>
+        </thead>
+        <tbody>
+           <tr>
+               <td><input type="text" [(ngModel)]="entryAirport._id"></td>
+               <td><input type="text" [(ngModel)]="entryAirport.airport_name" ></td>
+               <td><input type="text" [(ngModel)]="entryAirport.fuel_capacity" pattern = "[0-9]"></td>
+               <td><input type="text" [(ngModel)]="entryAirport.fuel_available"pattern = "[0-9]"></td>
+               <td><input type="button" value="Add" (click)="addToAirportList()"></td>
+           </tr>
+        </tbody>
+    </table> 
+</div>
+<br>
+<h2>Airport Details:</h2>
+<div class="Airport_container">
+    <table >
+        <thead>
+           <th>id</th>
+           <th>name</th>
+           <th>fuel capacity</th>
+           <th>fuel available</th>
+        </thead>
+        <tbody class="table_airport">   
+            <tr  *ngFor="let airport of AirportList">
+                <td>{{airport._id}}</td>
+                <td>{{airport.airport_name}}</td>
+                <td>{{airport.fuel_capacity}}</td>
+                <td>{{airport.fuel_available}}</td>
+            </tr>
+       </tbody> 
+    </table> 
+</div>
